@@ -2,23 +2,31 @@
 <html>
 <head>
   <title>The Shorts Wars Cinematic Universe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
       background-color: #FF0000; /* Red */
     }
 
     .custom-button {
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 15px 30px;
+      font-size: 18px;
       background-color: #FF5874; /* Pinkish */
       border: none;
       color: white; /* White */
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      margin: 4px 2px;
+      margin: 10px;
       cursor: pointer;
       border-radius: 8px;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .custom-button {
+        padding: 12px 24px;
+        font-size: 16px;
+      }
     }
   </style>
 </head>
