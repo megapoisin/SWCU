@@ -97,11 +97,17 @@
 <a href="https://toonturf.fandom.com" target="_blank"><button class="custom-button">Toon Turf Wiki</button></a>
 
 <!-- Light mode toggle button -->
-<button class="toggle-button" onclick="toggleMode()">Toggle Light Mode</button>
+<button class="toggle-button" onclick="toggleMode()">Toggle Dark/Light Mode</button>
 
 <script>
   function toggleMode() {
     document.body.classList.toggle('light-mode');
+    const button = document.querySelector('.toggle-button');
+    if (document.body.classList.contains('light-mode')) {
+      button.textContent = 'Toggle Light Mode';
+    } else {
+      button.textContent = 'Toggle Dark Mode';
+    }
   }
 </script>
 
