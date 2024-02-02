@@ -60,6 +60,24 @@
       background-color: #ffc4fc; /* Darker blue on hover */
     }
 
+    /* Toggle button styles */
+    .toggle-button {
+      padding: 8px 15px; /* Adjust height */
+      font-size: 16px; /* Adjust font size */
+      background-color: #FF5874; /* Pinkish */
+      border: none;
+      color: white; /* White text */
+      cursor: pointer;
+      border-radius: 8px;
+      margin-top: 20px; /* Add some top margin */
+      font-family: 'Exo 2', sans-serif; /* Same font as header */
+      transition: background-color 0.3s; /* Smooth transition effect */
+    }
+
+    .toggle-button:hover {
+      background-color: #FF8AB8; /* Lighter pinkish color on hover */
+    }
+
   </style>
 </head>
 <body class="dark-mode">
@@ -74,7 +92,7 @@
 <a href="https://toonturf.fandom.com" target="_blank"><button class="custom-button">Toon Turf Wiki</button></a>
 
 <!-- Light mode toggle button -->
-<custom-button onclick="toggleMode()">Toggle Light Mode</custom-button>
+<button class="toggle-button" onclick="toggleMode()">Toggle Light Mode</button>
 
 <script>
   function toggleMode() {
