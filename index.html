@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
   <style>
     body {
+      position: relative; /* Set body as relative positioning reference */
       background-color: #910a00; /* Darker background color */
       color: white; /* White text */
       font-family: Arial, sans-serif;
@@ -69,7 +70,9 @@
       color: white; /* White text */
       cursor: pointer;
       border-radius: 8px;
-      margin-top: 20px; /* Add some top margin */
+      position: absolute; /* Position absolute for fixed position */
+      top: 20px; /* 20px from the top */
+      right: 20px; /* 20px from the right */
       font-family: 'Exo 2', sans-serif; /* Same font as header */
       transition: background-color 0.3s; /* Smooth transition effect */
     }
