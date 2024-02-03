@@ -5,107 +5,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="image_2024-02-02_143807937.png">
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
-  <!-- Include Showdown.js library -->
-  <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
   <style>
     body {
-      position: relative;
-      background-color: #910a00;
-      color: white;
+      position: relative; /* Set body as relative positioning reference */
+      background-color: #910a00; /* Darker background color */
+      color: white; /* White text */
       font-family: Arial, sans-serif;
       text-align: center;
-      margin: 0;
-      padding-bottom: 60px;
+      margin: 0; /* Remove default margin */
+      padding-bottom: 60px; /* Add space for the toggle button */
     }
 
     h1 {
       margin-top: 50px;
       font-family: 'Exo 2', sans-serif;
-      font-weight: 300;
+      font-weight: 300; /* Light */
     }
 
     .custom-button {
       padding: 15px 30px;
       font-size: 18px;
-      background-color: #FF5874;
+      background-color: #FF5874; /* Pinkish */
       border: none;
-      color: white;
+      color: white; /* White text */
       text-align: center;
       text-decoration: none;
       display: inline-block;
       margin: 10px;
       cursor: pointer;
       border-radius: 8px;
-      font-family: 'Exo 2', sans-serif;
-      transition: background-color 0.3s;
+      font-family: 'Exo 2', sans-serif; /* Same font as header */
+      transition: background-color 0.3s; /* Smooth transition effect */
     }
 
     .custom-button:hover {
-      background-color: #FF8AB8;
+      background-color: #FF8AB8; /* Lighter pinkish color on hover */
     }
 
     hr {
-      border: 1px solid white;
+      border: 1px solid white; /* White line */
       width: 80%;
       margin: 20px auto;
     }
 
     /* Light mode styles */
     body.light-mode {
-      background-color: #ff99cf;
-      color: #222;
+      background-color: #ff99cf; /* White background */
+      color: #222; /* Dark text */
     }
 
     body.light-mode .custom-button {
-      background-color: #ff16ec;
-      color: white;
+      background-color: #ff16ec; /* Blue buttons */
+      color: white; /* White text */
     }
 
     body.light-mode .custom-button:hover {
-      background-color: #ffc4fc;
+      background-color: #ffc4fc; /* Darker blue on hover */
     }
 
     /* Toggle button styles */
     .toggle-button {
-      padding: 8px 15px;
-      font-size: 16px;
-      background-color: #FF5874;
+      padding: 8px 15px; /* Adjust height */
+      font-size: 16px; /* Adjust font size */
+      background-color: #FF5874; /* Pinkish */
       border: none;
-      color: white;
+      color: white; /* White text */
       cursor: pointer;
       border-radius: 8px;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      font-family: 'Exo 2', sans-serif;
-      transition: background-color 0.3s;
+      position: fixed; /* Position fixed for bottom of the page */
+      bottom: 20px; /* 20px from the bottom */
+      right: 20px; /* 20px from the right */
+      font-family: 'Exo 2', sans-serif; /* Same font as header */
+      transition: background-color 0.3s; /* Smooth transition effect */
     }
 
     .toggle-button:hover {
-      background-color: #FF8AB8;
+      background-color: #FF8AB8; /* Lighter pinkish color on hover */
     }
 
-    .updates-container {
-      margin-top: 20px;
-      text-align: left;
-      padding: 0 20px;
+    h2 {
+      margin-top: 30px;
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 300; /* Light */
     }
 
-    .update-item {
-      margin-bottom: 20px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 10px;
+    /* Centered Markdown content */
+    .markdown-content {
+      text-align: center;
     }
 
-    .update-title {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .update-description {
-      font-size: 16px;
-    }
   </style>
 </head>
 <body class="dark-mode">
@@ -119,15 +107,17 @@
 <a href="https://chicken-burger-smp.fandom.com" target="_blank"><button class="custom-button">Chicken Burger SMP Wiki</button></a>
 <a href="https://toonturf.fandom.com" target="_blank"><button class="custom-button">Toon Turf Wiki</button></a>
 
-<!-- Subheader for "What's New" -->
-<h2>What's New</h2>
-<hr>
+<h2>What's New</h2> <!-- "What's New" subheader -->
+
+<hr> <!-- HR tag above buttons -->
+
+
+<div class="markdown-content" id="markdown-content">
+  
+</div>
 
 <!-- Light mode toggle button -->
 <button class="toggle-button" onclick="toggleMode()">Toggle Dark/Light Mode</button>
-
-<!-- Container for "What's New" content -->
-<div class="updates-container" id="whats-new-container"></div>
 
 <script>
   function toggleMode() {
@@ -140,23 +130,21 @@
     }
   }
 
-  // Function to fetch and render Markdown content
-  function renderMarkdown() {
-    // Fetch the "whats-new.md" file
-    fetch('whats-new.md')
-      .then(response => response.text())
-      .then(markdown => {
-        // Convert Markdown to HTML using Showdown.js
-        const converter = new showdown.Converter();
-        const html = converter.makeHtml(markdown);
-        // Set the HTML content in the container div
-        document.getElementById('whats-new-container').innerHTML = html;
-      })
-      .catch(error => console.error('Error fetching Markdown:', error));
+  // Function to fetch and display Markdown content
+  function fetchMarkdown() {
+      fetch('whats-new.md')
+          .then(response => response.text())
+          .then(markdown => {
+              // Convert Markdown to HTML using marked.js
+              const html = marked(markdown);
+              // Insert HTML into the designated div
+              document.getElementById('markdown-content').innerHTML = html;
+          })
+          .catch(error => console.error('Error fetching Markdown:', error));
   }
 
-  // Call renderMarkdown function when the page loads
-  window.addEventListener('load', renderMarkdown);
+  // Call the fetchMarkdown function when the page loads
+  window.addEventListener('load', fetchMarkdown);
 </script>
 
 </body>
