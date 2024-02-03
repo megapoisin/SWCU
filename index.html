@@ -83,6 +83,24 @@
       background-color: #FF8AB8; /* Lighter pinkish color on hover */
     }
 
+    .updates-container {
+      margin-top: 50px;
+      text-align: left;
+    }
+
+    .update-item {
+      margin-bottom: 20px;
+    }
+
+    .update-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .update-description {
+      font-size: 16px;
+    }
+
   </style>
 </head>
 <body class="dark-mode">
@@ -97,7 +115,9 @@
 <a href="https://toonturf.fandom.com" target="_blank"><button class="custom-button">Toon Turf Wiki</button></a>
 
 <!-- Light mode toggle button -->
-<button class="toggle-button" onclick="toggleMode()">Toggle Light Mode</button>
+<button class="toggle-button" onclick="toggleMode()">Toggle Dark/Light Mode</button>
+
+<div class="updates-container" id="updates-container"></div>
 
 <script>
   function toggleMode() {
@@ -109,6 +129,34 @@
       button.textContent = 'Toggle Light Mode';
     }
   }
+
+  // Function to fetch updates data from the Flask API
+  function fetchUpdates() {
+    fetch('/api/updates')
+      .then(response => response.json())
+      .then(data => {
+        // Display the updates data on the webpage
+        const updatesContainer = document.getElementById('updates-container');
+        updatesContainer.innerHTML = ''; // Clear previous content
+        data.forEach(update => {
+          const updateItem = document.createElement('div');
+          updateItem.classList.add('update-item');
+          const title = document.createElement('div');
+          title.classList.add('update-title');
+          title.textContent = update.title;
+          const description = document.createElement('div');
+          description.classList.add('update-description');
+          description.textContent = update.description;
+          updateItem.appendChild(title);
+          updateItem.appendChild(description);
+          updatesContainer.appendChild(updateItem);
+        });
+      })
+      .catch(error => console.error('Error fetching updates:', error));
+  }
+
+  // Call fetchUpdates function when the page loads
+  window.addEventListener('load', fetchUpdates);
 </script>
 
 </body>
