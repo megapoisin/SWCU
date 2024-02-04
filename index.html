@@ -101,11 +101,34 @@
       overflow-wrap: break-word; /* Wrap long words */
     }
 
+    /* Login button styles */
+    .login-button {
+      position: fixed; /* Position fixed for top left corner */
+      top: 20px; /* 20px from the top */
+      left: 20px; /* 20px from the left */
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: #7289DA; /* Discord blue color */
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Exo 2', sans-serif; /* Same font as header */
+      transition: background-color 0.3s; /* Smooth transition effect */
+    }
+
+    .login-button:hover {
+      background-color: #677BC4; /* Darker shade of Discord blue on hover */
+    }
+
   </style>
 </head>
 <body class="dark-mode">
 
 <h1>The Shorts Wars Cinematic Universe</h1>
+
+<!-- Login button -->
+<button class="login-button">Login with Discord</button>
 
 <hr>
 
